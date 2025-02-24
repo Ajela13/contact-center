@@ -17,7 +17,7 @@ export default function ClientFilters() {
   };
 
   return (
-    <div className="flex justify-center shadow-lg shadow-black rounded-lg">
+    <div className="flex justify-center  rounded-lg">
       <select
         className="text-2xl text-center bg-black text-white p-2 rounded-lg min-w-80"
         onChange={handleFilterChange}
