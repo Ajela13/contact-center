@@ -1,21 +1,12 @@
 "use client";
 import { useClients } from "@/hooks/useClients";
 import ClientCard from "@/components/ClientCard";
-import { useSearchParams } from "next/navigation";
 import Loading from "@/app/agents/loading";
+import { useStore } from "@/store/store";
 
 const ClientList = () => {
-  const { clients, loading } = useClients();
-  console.log(clients);
-  const searchParams = new URLSearchParams(useSearchParams());
-  const waitTimeFilter = searchParams.get("waitTime");
-
-  const filteredClients = clients.filter((client) => {
-    if (!waitTimeFilter) return true; // Si no hay filtro, mostrar todos los clientes
-
-    const [minWaitTime, maxWaitTime] = waitTimeFilter.split("-").map(Number);
-    return client.waitTime >= minWaitTime && client.waitTime <= maxWaitTime;
-  });
+  const { stateFilter } = useStore();
+  const { clients, loading } = useClients(stateFilter);
 
   if (loading) {
     return <Loading />;
@@ -24,7 +15,7 @@ const ClientList = () => {
   return (
     <div className="flex justify-center w-full h-full ">
       <ul className="mt-10 flex flex-wrap justify-center">
-        {filteredClients.map((client) => (
+        {clients.map((client) => (
           <ClientCard
             key={client.id}
             name={client.name}
