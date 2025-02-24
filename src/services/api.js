@@ -11,7 +11,9 @@ export const fetchAgents = async (state) => {
 
 export const fetchClients = async (maxWaitTime) => {
   const url = maxWaitTime
-    ? `${API_URL}/clients?maxWaitTime=${maxWaitTime}`
+    ? `${API_URL}/clients?minWaitTime=${
+        maxWaitTime.split("-")[0]
+      }&maxWaitTime=${maxWaitTime.split("-")[1]}`
     : `${API_URL}/clients`;
 
   const res = await fetch(url);
