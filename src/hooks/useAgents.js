@@ -8,7 +8,6 @@ export const useAgents = (stateFilter) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("Filtrando por estado:", stateFilter, fetchAgents(stateFilter));
     // Función para obtener los agentes desde la API
     const fetchAgentsData = async () => {
       setLoading(true);
