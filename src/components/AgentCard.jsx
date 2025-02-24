@@ -1,11 +1,22 @@
-export default function AgentCard({ id, name, status, waitTime }) {
+import Image from "next/image";
+export default function AgentCard({ name, status, waitTime }) {
   return (
-    <li key={id}>
-      <h3>{name}</h3>
-      <p>
-        Estado: <span>{status}</span>
+    <div className="flex flex-col items-center justify-center  rounded-lg m-4 bg-sky-900/90 h-63 w-50 relative shadow-lg shadow-black ">
+      <Image
+        className="size-fit  rounded-t-lg "
+        src="/agents.svg"
+        alt="logo"
+        width={200}
+        height={200}
+        priority
+      />
+      <h3 className="text-2xl text-white mb-5 absolute w-full text-center rounded-t-lg  bg-sky-900/50  -top-0 ">
+        {name}
+      </h3>
+      <p className="text-lg text-white">
+        <span>{status}</span>
       </p>
-      <p>Tiempo en espera: {waitTime} min</p>
-    </li>
+      <p className="text-lg text-white">{waitTime} min</p>
+    </div>
   );
 }
