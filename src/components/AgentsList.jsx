@@ -1,26 +1,20 @@
 "use client";
 import { useAgents } from "@/hooks/useAgents";
 import AgentCard from "@/components/AgentCard";
-import { useSearchParams } from "next/navigation";
 import Loading from "@/app/agents/loading";
+import { useStore } from "@/store/store";
 
 const AgentsList = () => {
-  const { agents, loading } = useAgents();
-  const searchParams = useSearchParams();
-  const filterState = searchParams.get("state");
-
-  const filteredAgents = filterState
-    ? agents.filter((agent) => agent.status === filterState)
-    : agents;
-
+  const { stateFilter } = useStore(); // Obtener filtro del store
+  const { agents, loading } = useAgents(stateFilter); // Pasar filtro al hook
   if (loading) {
     return <Loading />;
   }
-  console.log(agents);
+
   return (
     <div className="flex justify-center w-full h-full ">
       <ul className="mt-10 flex flex-wrap justify-center">
-        {filteredAgents.map((agent) => (
+        {agents.map((agent) => (
           <AgentCard
             key={agent.id}
             name={agent.name}
