@@ -1,7 +1,7 @@
 import Image from "next/image";
 export default function AgentCard({ name, status, waitTime }) {
   return (
-    <div className="flex flex-col items-center justify-center  rounded-lg m-4 bg-sky-900/90 h-63 w-50 relative shadow-lg shadow-black ">
+    <div className="flex flex-col items-center justify-center  rounded-lg m-4 bg-sky-900/90 h-63 w-50 relative  ">
       <Image
         className="size-fit  rounded-t-lg "
         src="/agents.svg"
