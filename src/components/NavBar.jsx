@@ -7,7 +7,7 @@ export default function NavBar() {
         className="flex flex-col items-center size-55 relative my-10 "
       >
         <Image
-          className="rounded-lg mb-5  "
+          className="rounded-lg mb-5 shadow-lg shadow-black "
           src="/agents.svg"
           alt="agents"
           width={120}
