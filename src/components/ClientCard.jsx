@@ -1,9 +1,9 @@
 import Image from "next/image";
 export default function ClientCard({ name, waitTime }) {
   return (
-    <div className="flex flex-col items-center justify-center  rounded-lg m-4 bg-black h-57 w-50 relative ">
+    <div className="flex flex-col items-center justify-center  rounded-lg m-4 bg-black h-57 w-50 relative shadow-lg shadow-black ">
       <Image
-        className="size-fit  rounded-t-lg "
+        className="size-fit  rounded-t-lg  "
         src="/clients.svg"
         alt="logo"
         width={200}
